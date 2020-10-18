@@ -22,13 +22,18 @@
 3. `arr.join(", ")`
 4. When a value is created and stored in a variable, an address is created in memory with that value, and the variable name points to that address in memory. 
 Passing by value happens mostly with primitives. When a value is passed to a variable by value, the variable is assigned the value and references a new address in memory. So if the value of the first variable is changed, it doesn't affect the value of the second variable, as the values are picked from different addresses in memory.
-```let instructor = 'Elie';
-	let anotherInstructor = instructor;
+```
+let instructor = 'Elie';
+let anotherInstructor = instructor;
 	```
 	At this point both `instructor` and `anotherInstructor` both have the same value, but what has happened is that `anotherInstructor` is assigned a copy of the value referenced by the variable `instructor`. The value for `anotherInstructor` however is assigned a different memory address. And so if the value of `instructor` is changed:
-	```instructor = 'Matt'``` the value of `anotherInstructor remains the same. Because both variables are referencing two different memory addresses.
+	```
+	instructor = 'Matt'
+	``` the value of `anotherInstructor remains the same. Because both variables are referencing two different memory addresses.
 
 On the other hand, passing by reference assigns the value found in a memory address to the two variables
-``` let instructors = ['Elie', 'Matt'];
-	let instructorsCopy = instructors; ```
+``` 
+let instructors = ['Elie', 'Matt'];
+	let instructorsCopy = instructors; 
+	```
 `instructorsCopy` points to the same memory address as `instructors`. And so if we have ```instructorsCopy.push('Bart');```, logging `instructors` will reflect the change made to `instructorsCopy`

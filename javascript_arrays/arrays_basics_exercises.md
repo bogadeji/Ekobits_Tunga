@@ -1,7 +1,9 @@
 1. `let favoriteFoods = ["Jollof Rice", "Dodo", "Pizza"];`
 2. `favoriteFoods[1]`
-3. ```let length = favoriteFoods.length
-	favoriteFoods[length - 1] = "Pounded Yam"```
+3. ```
+let length = favoriteFoods.length
+	favoriteFoods[length - 1] = "Pounded Yam"
+	```
 4. `let formerFavoriteFood = favoriteFoods.shift()`
 5. `favoriteFoods.push("Amala")`
 6. `favoriteFoods.unshift("Chicken and Chips")`

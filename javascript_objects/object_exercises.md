@@ -1,4 +1,5 @@
-```let programming = {
+```
+let programming = {
 	languages: ["JavaScript", "Python", "Ruby"],
 	isChallenging: true,
 	isRewarding: true,
@@ -10,13 +11,19 @@
 2. `programming.difficulty = 7;`
 3. `delete programming.jokes;`
 4. `programming[isFun] = true;`
-5. let languages = programming[languages];
+5. ```
+let languages = programming[languages];
 for (let language in languages) {
 	console.log(language)
 }
-6. for (let key in programming) {
+```
+6. ```
+for (let key in programming) {
 	console.log(key);
 }
-7. for (let key in programming) {
+```
+7. ```
+for (let key in programming) {
 	console.log(programming[key])
 }
+```
