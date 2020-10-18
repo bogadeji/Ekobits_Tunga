@@ -21,9 +21,9 @@
 # Part III
 
 1. ```if(Math.random() > 0.5) {
-		console.log("Over 0.5")
-	} else {
-		console.log("Under 0.5")
-	}
+	```	console.log("Over 0.5")
+```	} else {
+```		console.log("Under 0.5")
+```	}
 2. a.  A `falsey` value is one that evaluates to `false` in the boolean context. 
 b. `null`, `undefined`, `NaN`, `0`, `"" (empty string)`, `false`
