@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    	* {
+    		margin: 0;
+    		padding: 0;
+    	}
+    	body {
+    		    font-family: arial,sans-serif;
+    		    line-height: 34px;
+    	}
+    	nav {
+    		height: 40px;
+    		-webkit-box-shadow: 0px 3px 5px 0px rgba(229,229,229,1);
+			-moz-box-shadow: 0px 3px 5px 0px rgba(229,229,229,1);
+			box-shadow: 0px 3px 5px 0px rgba(229,229,229,1);
+			height: 60px;
+			background-color: #fff;
+			padding: 0 30px !important;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: fixed;
+			top: 0;
+			z-index: 5;
+			width: 100%;
+    	}
+    	nav span {
+    		font-size: 30px;
+    		font-weight: 600;
+    		color: #93c8f2;
+    	}
+    	nav span:first-child {
+    		padding: 0;
+			margin: 0;
+			font-size: 30px;
+			font-weight: 900;
+			letter-spacing: 1.5px;
+			color: #3b2995
+    	}
+    	nav span:last-child {
+    		color: #e03535
+    	}
+    	main {
+    		margin-top: 100px;
+    		padding: 0 300px
+    	}
+        .todo-title h6 {
+            color: #b6b6b6;
+        }
+    	.todo-title .task-progress, .todo-title .task-progress div {
+			height: 3px;
+			position: relative;
+			border-radius: 4px;
+		}
+		.todo-title .task-progress {
+			margin-top: 10px;
+			background-color: rgba(211, 211, 211, 0.8);
+			width: 100%;
+		}
+		.todo-title .task-progress div {
+			width: 30%;
+			background-color: #e03535;
+		}
+        ul {
+            list-style-type: none;
+        }
+        li.list {
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        li.list dt label {
+            padding: 0 10px 0 10px;
+        }
+		div.button {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+		}
+		button#create-todo {
+			color: #fff;
+			background-color: #e03535;
+			font-size: 20px;
+            font-weight: 200;
+			height: 50px;
+			width: 50px;
+			border-radius: 7px;
+			border: none;
+			margin: 10px 0;
+		}
+        button:focus {
+            outline: none;
+            outline-color: none;
+        }
+        #newTodoForm {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.25);
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #newTodoForm:target {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+         }
+        #newTodoForm>div:first-child {
+            width: 50em;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 70px 10px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        #newTodoForm>div:first-child a {
+            top: 10px;
+            right: 10px;
+            position: absolute;
+            font-size: 12px;
+            color: #217d80;
+        }
+        #newTodoForm>div:first-child button{
+            padding : 10px 30px;
+            margin-top: 15px;
+            background-color: #217d80;
+            border: unset;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 600;
+            width: 80%;
+        }
+        #newTodoForm input:not([type=radio]){
+            height: 30px;
+            width: 80%;
+            margin: 5px 0;
+            border: 1px solid #e7e7e7;
+            border-radius: 8px;
+        }
+        #close {
+            top: 10px;
+            right: 10px;
+            position: absolute;
+            font-size: 12px;
+            color: #217d80;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    	<nav>
+    		<h1><span>DAY</span><span>2</span><span>Day</span></h1>
+    	</nav>
+    </header>
+    <main>
+        <div id="newTodoForm">
+            <div>
+                <a href="#" id="close">Close</a>
+                <form action="#" id="todoForm">
+                    <label for="task">New Task: </label><br>
+                    <input type="text" name="task" id="task" autofocus>
+                    <input type="submit" value="Create New Task">
+                </form>
+            </div>
+        </div>
+    	<div class="todo-title">
+    		<div>
+    			<h1>My Tasks</h1>
+    			<h6><span id="completedTasks"></span> 0f <span id="totalTasks"></span> tasks</h6>
+    		</div>
+    		<div class="task-progress">
+    			<div></div>
+    		</div>
+    	</div>
+        <div>
+            <ul id="todoList"> </ul>         
+        </div>
+        <div class="button">
+            <a href="#newTodoForm"><button id="create-todo">+</button></a>
+        </div>
+    	<section id="todoList">
+            
+    	</section>
+
+
+    	<!-- Add task modal -->
+        
+    </main>
+    	
+    <script >
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    let todoForm = document.getElementById("todoForm");
+    let todoList = document.getElementById("todoList");
+    let onlyCompletedTasks = document.getElementById('completedTasks')
+    let totalTasks = document.getElementById('totalTasks')
+    let widthDiv = document.querySelector('.task-progress div')
+   
+    let savedTodos = JSON.parse(localStorage.getItem("todos")) || []
+    for(let i=0; i < savedTodos.length; i++){
+        let newTodo = document.createElement("li");
+        
+        listTasks(todoList, savedTodos[i].task, savedTodos[i].isCompleted)
+        
+
+        todoList.appendChild(newTodo);
+    }
+    
+    
+    onlyCompletedTasks.innerText = completedTasks(savedTodos)
+    totalTasks.innerText = savedTodos.length
+    widthDiv.style.width = divWidthPercentage(completedTasks(savedTodos), savedTodos.length) + '%'
+
+    todoForm.addEventListener("submit", function(event){
+        event.preventDefault();
+        let innerText = document.getElementById("task").value;
+
+        listTasks(todoList, innerText)
+        todoForm.reset();
+
+        savedTodos.push({task: innerText, isCompleted: false});
+        localStorage.setItem("todos", JSON.stringify(savedTodos));
+    })
+
+  
+    todoList.addEventListener("click", function(event){
+        let clickedListItem = event.target;
+
+        if (event.target.tagName.toLowerCase() === 'input') {
+            
+                event.target.parentNode.style.textDecoration = "line-through";
+                event.target.parentNode.style.color = "#e03535"
+                if (event.target.checked) {
+                    event.target.parentNode.style.textDecoration = "line-through";
+                    event.target.parentNode.style.color = "#e03535"
+                    event.target.isCompleted = true
+                } else {
+                    event.target.parentNode.style.textDecoration = "none";
+                    event.target.parentNode.style.color = "#000"
+                    event.target.isCompleted = false
+                }
+            
+        }else if (event.target.tagName.toLowerCase() === 'button') {
+            event.target.parentNode.remove();
+        } else if (event.target.tagName.toLowerCase() === 'label') {
+            todoList.style.textDecoration = "none";
+            event.target.isCompleted = false;
+        }
+        let innerText = event.target.parentNode.firstChild.nextSibling.innerText
+
+        for(let i=0; i < savedTodos.length; i++){
+            if(savedTodos[i].task === innerText){
+                savedTodos[i].isCompleted = event.target.isCompleted;
+                localStorage.setItem("todos", JSON.stringify(savedTodos));
+            }
+        }
+        onlyCompletedTasks.innerText = completedTasks(savedTodos)
+        widthDiv.style.width = divWidthPercentage(completedTasks(savedTodos), savedTodos.length) + '%'
+    });
+
+    function listTasks(elem, text, isCompleted = false) {
+        let removeButton = document.createElement("button");
+        removeButton.innerText = "X";
+        let newTodo = document.createElement("li");
+        let dl = document.createElement('dl')
+        let dt = document.createElement('dt')
+        let input = document.createElement('input')
+        let label = document.createElement('label')
+
+        label.innerText =  text;
+        input.type = "checkbox"; 
+        input.name = "name"; 
+        input.value = "value"; 
+        input.id = "id"; 
+
+        dt.appendChild(input)
+        dt.appendChild(label)
+        dl.appendChild(dt)
+        // dt.appendChild(removeButton);
+
+        newTodo.appendChild(dl)
+        newTodo.classList.add('list')
+        newTodo.isCompleted = false;
+
+        newTodo.isCompleted = isCompleted ? true : false;
+        if(newTodo.isCompleted) {
+            dt.style.textDecoration = "line-through";
+            dt.style.color = "#e03535"
+            input.checked = true
+        } else {
+            dt.style.textDecoration = "none";
+            dt.style.color = "#000"
+            input.checked = false
+        }
+
+        elem.appendChild(newTodo);
+    }
+
+    function completedTasks(tasks) {
+        return tasks.reduce(function (acc, next) {
+            if(next.isCompleted) {
+                acc++
+            }
+            return acc
+        }, 0)
+    }
+
+    function divWidthPercentage (num, den) {
+        return (num/den) * 100
+    }
+
+})
+</script>
+</body>
+</html'>'
