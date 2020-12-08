@@ -1,5 +1,5 @@
 Declare a variable called first and assign it to the value "Hello World".
-``` first = Hellow World ```
+``` first = Hello World ```
 Write a comment that says "This is a comment."
 ``` # This is a comment ```
 Log a message to the terminal that says "I AM A COMPUTER!"
